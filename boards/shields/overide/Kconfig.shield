@@ -1,0 +1,5 @@
+config SHIELD_OVERIDE_LEFT
+    def_bool $(shields_list_contains,overide_left)
+
+config SHIELD_OVERIDE_RIGHT
+    def_bool $(shields_list_contains,overide_right)
