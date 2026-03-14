@@ -4,9 +4,22 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
+        zmk,battery = &vbatt;
     };
 
-    /* Renamed to v_ext_power to avoid conflict with ZMK built-ins */
+    /* Dummy battery node to stop 0% reporting */
+    vbatt: vbatt {
+        compatible = "zmk,battery-voltage-divider";
+        label = "BATTERY";
+        full-ohlms = <1000000>;
+        half-ohlms = <1000000>;
+        voltage-divider {
+            io-channels = <&adc 7>; // P0.31 on XIAO
+            output-ohms = <1000000>;
+            full-ohms = <2000000>;
+        };
+    };
+
     v_ext_power: v_ext_power {
         compatible = "zmk,ext-power-generic";
         control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>; 
@@ -29,11 +42,11 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4)  RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9)
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
         row-gpios
-            = <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D10
-            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D9 
-            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D8 
-            , <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D7 
-            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D6 
+            = <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D10 
+            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D9  
+            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D8  
+            , <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D7  
+            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D6  
             ;
     };
 };
