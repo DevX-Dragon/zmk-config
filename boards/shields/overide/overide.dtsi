@@ -8,7 +8,6 @@
         zmk,underglow = &led_strip;
     };
 
-    /* Fixed spelling: 'ohms' not 'ohlms' */
     vbatt: vbatt {
         compatible = "zmk,battery-voltage-divider";
         io-channels = <&adc 7>;
