@@ -6,8 +6,8 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    /* Fixes 'ext_power' undeclared error */
-    ext_power: ext_power {
+    /* Renamed to v_ext_power to avoid conflict with ZMK built-ins */
+    v_ext_power: v_ext_power {
         compatible = "zmk,ext-power-generic";
         control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>; 
     };
@@ -30,10 +30,10 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4)  RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9)
         diode-direction = "col2row";
         row-gpios
             = <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D10
-            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D9
-            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D8
-            , <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D7
-            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D6
+            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D9 
+            , <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D8 
+            , <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D7 
+            , <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D6 
             ;
     };
 };
