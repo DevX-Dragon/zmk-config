@@ -6,8 +6,8 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    /* This block fixes the 'ext_power' undeclared error */
-    ext-power {
+    /* Fixes 'ext_power' undeclared error */
+    ext_power: ext_power {
         compatible = "zmk,ext-power-generic";
         control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>; 
     };

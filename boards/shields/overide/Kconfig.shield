@@ -1,7 +1,18 @@
+config SHIELD_OVERIDE_LEFT
+    def_bool $(shields_list_contains,overide_left)
+
+config SHIELD_OVERIDE_RIGHT
+    def_bool $(shields_list_contains,overide_right)
+
 if SHIELD_OVERIDE_LEFT
     config ZMK_KEYBOARD_NAME
         default "overide"
 
     config ZMK_SPLIT_ROLE_CENTRAL
         default y
+endif
+
+if SHIELD_OVERIDE_RIGHT
+    config ZMK_KEYBOARD_NAME
+        default "overide"
 endif
